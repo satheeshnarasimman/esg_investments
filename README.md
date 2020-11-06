@@ -1,50 +1,157 @@
-# **Mission.me: Impact Investing for All**
+# capstone_project1_group6
+- This project compares the various Environmental, Social and Governance (ESG) factors of USA in the 2010's decade and also against the ESG factors of various other countries.
 
-![Logo](Images/image.jpg)
+- Based on the various ESG factors, the performance of the Exchange Traded Funds (ETF) devoted to the ESG, i.e. sustainable investing, in various sectors are compared and their 10 years of returns is projected via Monte Carlo Simulation.
 
-## **Background**
-- Impact Investing, aka Sustainable/Responsible/ESG Investing, seeks to deliver competitive financial returns while driving positive environmental, social and governance (ESG) outcomes. Over the past few years, impact investing has gained significant momentum among asset managers; it now accounts for more than one-fourth of total assets under management (AUM) in the U.S., with AUM growing to $12 trillion, up 38% from the start of 2016 to the start of 2018. Total assets in sustainable investing exceeded $30 trillion globally at the start of 2018, with institutions accounting for 75% of the total.
+- The end goal is a proposal for the creation of an investment recommendation platform that would cater to people who are focused towards sustainability. The platform will suggest investing in a portfolio, based on the ESG cause that an individual is most concerned about, to drive positive/ sustainable impact on the country.
 
-- Yet there are few outlets that exist to address retail investors' needs. As shown before, only 25% of AUM was from retail. As demographics shift, we believe the new generation of retail investors, who are already showing strong preferences and willing to pay a premium for the green and sustainable product (i.e. vegetarian burgers, electronic vehicles), have unfilled needs to help them identify and measure ESG investments. Just as Robhinhood has democratized investing, we're creating a product to democratize impact investing for all.
+## Libraries/Technologies used
+- os
+- csv
+- requests
+- pandas
+- numpy
+- panel
+- hvplot
+- tkinter
+- pathlib
+- dotenv
+- plotly express
+- MCforecasttools
+- alpaca trade api
 
-## **Product Overview and Vision**
-- This wil be a one-stop app to enable retail investors identify and track how US is performing on core ESG indicators, research investments and construct porfolios to meet thier financial goals as well as contributing positively to the ESG issues that they want to improve. 
+## Tools used
+- Gitbash
+- Github
+- Slack
+- Jupyter lab
+- Panel dashboard
+- Microsoft CSV
+- Alpaca API
+- Google sheets
+- Google slides
 
-- ### **ESG Indicators**
-- Visulization of how US performs against a basked of 50 countries on core ESG issues
-- Users can follow issues they care about and start track news/changes to this issue
-- We would have the options for users to publish their ESG stories on social media apps to create a positive reenforcing environment and drive user engagement
+## Data collected
+- ESG indicators on 17 different factors for all the countries, from 1961- 2019 (Source: World Bank)
+- Ticker data of ESG focused ETFs in alternative energy, board diversity, education, nuclear power, disease treatment, green building. (Source: ETF Database, Alpaca)
 
-- ### **Personal Financial Planning**
-- Users can set financial goals: such as education, vacation, retirement
-- Users can integrate other bank/investment accounts to view thier personal finances in one snapshot
+## Notebooks created
+- esg_analysis; to compare the ESG progress of USA in the last 10 years and also with 50 other countries.
+- esg_returns; to gather the 5-year ticker data of ETFs and project their 10-year return.
 
-- ### **ESG ETF Selection**
-- Users can see a basket of ETFs that help solve the respetive ESG issues they care most about
-- A variety of tools to track performances of the ETFs
-- Monte carlo simulation to show how their invesments might perform and how would that track against their financial goals
+## Data exploration and cleanup
+  
+### esg_analysis:
+- The metadata of all the countries' 17 ESG areas split up into more than 60 different facotors, from 1961- 2019, was pulled in a CSV format from World Bank's website.
 
-- ### **Portfolio Analytics**
-- Snapshot of investors' financial holdinngs, with the ability to track how the holding companies are impacting the ESG issues the investors want to improve
+- Our period of analysis was narrowed down only to the 2010s decade (10 years) and 9 factors, which we believed are the most important to address. Pandas was used for slicing and cleaning the data
 
-- ### **Trading Integration**
-- Future feature also includes the ability to buy/sell ETFs via Alpaca API
+- The following ESG factors were selected.
+    - Carbondioxide (CO2) Emission
+    - Particulate Matter (PM) exposure
+    - Forest area
+    - Renewable energy usage
+    - Life Expectancy
+    - Overweight population
+    - Women in legislature
+    - Research and Development expenditure
+    - GDP growth
+    
+- Many categories had missing data either for 1 year or multiple years. The missing year was removed from consideration and only the available yearly data was analyzed. For those categories that had only some missing data, it was reset to '0'. 
 
-## **Data Preparation**
-- Data Sources:
-- Data Selection
+- Each subset of data was analyzed and graphs were plotted.
 
-## **Data Analysis**
-- ### *ESG Data*
-- We did visualization of US performance etc.
+### esg_returns:
+- The 5-year ticker data of the ESG focused ETFs was pulled from Alpaca trade API.
 
-- ### *ETF Data*
-- Performance of each ETF
-- Monte Carlo Simulation
-- Contruction of model portfolio
+- The following were the sectors of interest
+    - Alternative Energy
+    - Board diversity
+    - Education
+    - Nuclear Power
+    - Disease treatment
+    - Green building
+    
+- The timeframe of the ticker data is from Dec 1, 2015 to Dec 12, 2019
+- The number of simulations for all sectors is 100.
+- 10-year return was projected for each of the sectors.
+- The investment amount is 10000 USD for all the sectors
 
-## **Conclusions**
-- In summary, 
+- Monte Carlo simulation was run and plotted. Then, the cumulative return distribution was plotted.
 
-## *Resources*
-* https://www.advisorperspectives.com/articles/2020/09/07/the-vanishing-difference-between-esg-and-conventional-funds
+- The summary statistics for the Monte Carlo simulation was calculated.
+
+- The lowest and the maximum possible return was calculated, based on 10000 USD initial investment.
+
+## Metrics calculated/ Graphs Plotted
+
+### esg_analysis:
+- For each of the categories, the following was calulated/ plotted.
+    - hvplot Bar chart of USA's progress in the last decade.
+    - Line plot of USA's progress compared with 2 other random countries
+    - Cumulative 10-year mean of all the countries, plotted as a bar.
+    
+- For a particular category, the top 5 highest or the lowest performing countries for a specified year was calculated.
+
+- In addition, for a particular category, the countries were sorted by the highest or the lowest cumulative mean.
+
+### esg_returns:
+- For each ESG sector, the following was calculated/ plotted.
+    - Monte Carlo Simulation and graph
+    - Cumulative return distribution plot
+    - Summary statistics: 95% lower and upper confidence interval
+    - Return on 10000 USD
+    
+## Dashboard Panel
+- Panel visualization functions were defined for each of the plots created in the esg_analysis notebook, to call the plots on the dashboard.
+
+- The plots for each category was arranged by column, using the Panel library.
+
+- Dashboard tabs were created for each category to interactively visualize the plots. 
+
+- Another dashboard was made using the tkinter python library (not covered in class), consisting of the graph interpretation for each of the above ESG category.
+
+## Plot interpretation
+- Find on the tkinter dashboard, by running it.
+
+## Conclusion
+- What is the most promising portfolio to invest in?
+
+## How to run the panel dashboard?
+- Download the file to the local machine and run the following command on the Jupyter Lab terminal to view the interactive plot:
+- "panel serve dashboard.ipynb --log-level debug --show"
+
+## Difficulties faced
+- The graphs dont display properly on the Panel dashboard. However, the plot is clean individually.
+
+## Contributors
+- Austin Avent
+- Sylvia Li
+- Satheesh Narasimman
+
+## People who helped
+- Allan Hall, Bootcamp Instructor
+- Joel Gonzales, Bootcamp Teaching Assistant
+- Khaled Karman, Satheesh's bootcamp tutor
+
+## References
+- https://databank.worldbank.org/source/environment-social-and-governance?preview=on#
+
+- https://datacatalog.worldbank.org/dataset/environment-social-and-governance-data
+
+- http://api.worldbank.org/v2/source/75/indicators
+
+- https://www.geeksforgeeks.org/creating-tabbed-widget-with-python-tkinter/
+
+- https://etfdb.com/
+
+- https://etfdb.com/esg-investing/environmental-issues/green-building/
+
+- https://hvplot.holoviz.org/user_guide/Customization.html
+
+- https://hvplot.holoviz.org/user_guide/Plotting.html
+
+- http://holoviews.org/user_guide/Dashboards.html
+
+- https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/
+    
