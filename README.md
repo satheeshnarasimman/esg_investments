@@ -41,7 +41,7 @@
 
 ## Data exploration and cleanup
   
-### esg_analysis:
+### * esg_analysis:
 - The metadata of all the countries' 17 ESG areas split up into more than 60 different facotors, from 1961- 2019, was pulled in a CSV format from World Bank's website.
 
 - Our period of analysis was narrowed down only to the 2010s decade (10 years) and 9 factors, which we believed are the most important to address. Pandas was used for slicing and cleaning the data
@@ -59,9 +59,9 @@
     
 - Many categories had missing data either for 1 year or multiple years. The missing year was removed from consideration and only the available yearly data was analyzed. For those categories that had only some missing data, it was reset to '0'. 
 
-- Each subset of data was analyzed and graphs were plotted.
+- Each subset of data was sliced from the metadata, then analyzed and graphs were plotted.
 
-### esg_returns:
+### *esg_returns:
 - The 5-year ticker data of the ESG focused ETFs was pulled from Alpaca trade API.
 
 - The following were the sectors of interest
@@ -84,8 +84,7 @@
 - The lowest and the maximum possible return was calculated, based on 10000 USD initial investment.
 
 ## Metrics calculated/ Graphs Plotted
-
-### esg_analysis:
+### *esg_analysis:
 - For each of the categories, the following was calulated/ plotted.
     - hvplot Bar chart of USA's progress in the last decade.
     - Line plot of USA's progress compared with 2 other random countries
@@ -95,7 +94,7 @@
 
 - In addition, for a particular category, the countries were sorted by the highest or the lowest cumulative mean.
 
-### esg_returns:
+### *esg_returns:
 - For each ESG sector, the following was calculated/ plotted.
     - Monte Carlo Simulation and graph
     - Cumulative return distribution plot
@@ -114,15 +113,16 @@
 ## Plot interpretation
 - Find on the tkinter dashboard, by running it.
 
-## Conclusion
-- What is the most promising portfolio to invest in?
-
 ## How to run the panel dashboard?
 - Download the file to the local machine and run the following command on the Jupyter Lab terminal to view the interactive plot:
-- "panel serve dashboard.ipynb --log-level debug --show"
+- "panel serve esg_analysis.ipynb --log-level debug --show"
+
+## Conclusion
+- Refer to the product_vision readme file.
 
 ## Difficulties faced
 - The graphs dont display properly on the Panel dashboard. However, the plot is clean individually.
+- Lack of complete (free) ESG data of countries from 2010- 2019
 
 ## Contributors
 - Austin Avent
@@ -154,4 +154,6 @@
 - http://holoviews.org/user_guide/Dashboards.html
 
 - https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/
+
+- https://www.advisorperspectives.com/articles/2020/09/07/the-vanishing-difference-between-esg-and-conventional-funds
     
