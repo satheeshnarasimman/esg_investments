@@ -1,4 +1,4 @@
-# capstone_project1_group6
+# Mockup of Investment recommendation platform
 - This project compares the various Environmental, Social and Governance (ESG) factors of USA in the 2010's decade and also against the ESG factors of various other countries.
 
 - Based on the various ESG factors, the performance of the Exchange Traded Funds (ETF) devoted to the ESG, i.e. sustainable investing, in various sectors are compared and their 10 years of returns is projected via Monte Carlo Simulation.
